@@ -1,20 +1,14 @@
-alert("¡Regístrate para ingresar!");
-const usuario = prompt("Ingresa tu nombre de usuario (ten en cuenta que el programa es sensible a mayúsculas y minúsculas)");
-const contraseña = prompt("Ingresa tu contraseña");
-alert("¡Usuario registrado!");
+let tareas = Number(prompt("Ingresa la cantidad de tareas a realizar"));
 
-do {
-    var ingresoUsuario = prompt("Para ingresar, escribe tu nombre de usuario");
-    
-    if (ingresoUsuario == usuario) {
-        var ingresoContraseña = prompt("Ahora, escribe tu contraseña"); 
-        if (ingresoContraseña == contraseña){
-            console.log(`¡Hola, ${usuario}!`);
-        } else {
-            alert("Contraseña incorrecta, intenta de nuevo");
-        }
-    } else {
-        alert("Usuario inválido, intenta de nuevo");
-    } 
 
-} while ((ingresoUsuario != usuario) || (ingresoContraseña != contraseña)); 
+function pedirInfo() {
+    let nombreTarea = prompt("Ingresa el nombre de la tarea");
+    let tiempoTarea = Number(prompt("Ingresa el tiempo de duración"));
+
+    alert(`El nombre de la tarea es ${nombreTarea} y su duración es ${tiempoTarea}`);
+}
+
+
+for (i = 0; i < tareas; i++) {
+    pedirInfo();
+}
