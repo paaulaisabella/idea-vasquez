@@ -8,36 +8,40 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+    <main>
     <h1>Temporizador de Tareas</h1>
     
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    <p class="parrafo__principal">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
     Suscipit quidem optio eaque deleniti cum sit consectetur! 
     Tempora nostrum obcaecati recusandae.</p>
 
-    <div>
+    <div class="contenedor__cantidadTareas">
         <label for="numeroDeTareas" class="">Ingresa la cantidad de tareas a realizar:</label>
         <input type="numero" class="" id="numero" placeholder="1-99">
     </div>
 
-    <form>
-    <div>
+    <form class="formulario">
+    <div class="formulario__div">
         <input type="nombreDeTarea" class="" id="nombreDeTarea" placeholder="Tarea 1">
         <input type="tiempoDeTarea" class="" id="tiempoDeTarea" placeholder="Horas/Minutos/Segundos">
     </div>
-    <div>
+    <div class="formulario__div">
         <input type="nombreDeTarea" class="" id="nombreDeTarea" placeholder="Tarea 2">
         <input type="tiempoDeTarea" class="" id="tiempoDeTarea" placeholder="Horas/Minutos/Segundos">
     </div>
-    <div>
+    <div class="formulario__div">
         <input type="nombreDeTarea" class="" id="nombreDeTarea" placeholder="Tarea 3">
         <input type="tiempoDeTarea" class="" id="tiempoDeTarea" placeholder="Horas/Minutos/Segundos">
     </div>
     <button type="reset" id="reset" name= "reset" class="">Borrar todo</button>
     </form>
 
-    <section>
+    <div class="contenedor">
+    <section class="contenedor__cuadro-tareas">
         Estás llevando a cabo la tarea: 
         <span>"(nombre de la tarea)"</span>
+    </section>
+    <section class="contenedor__cuadro-tiempo">
         Tiempo Restante: 
         <span>00:13:23</span>
         <button>Finalizar Tarea</button>
@@ -45,14 +49,15 @@
         <button>Pausar</button>
     </section>
 
-    <section>
+    <section class="contenedor__cuadro-porHacer">
         Tareas por realizar:
     </section>
 
-    <section>
+    <section class="contenedor__cuadro-finalizado">
         Tareas finalizadas:
     </section>
-
+    </div>
+    </main>
 
     <script src="./js/javascript.js"></script>
 </body>

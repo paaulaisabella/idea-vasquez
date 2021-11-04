@@ -12,3 +12,4 @@ function pedirInfo() {
 for (i = 0; i < tareas; i++) {
     pedirInfo();
 }
+
