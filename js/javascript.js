@@ -33,6 +33,7 @@ class Tareas {
             alert(`La tarea se llama ${this.nombre} y dura ${this.duracion}min. Su categoría es: ${this.categoria}`);
         } 
     }
+
 }
 
 // INICIAMOS UN FOR PARA PEDIR DATOS DE LAS TAREAS A REALIZAR: 
@@ -45,6 +46,20 @@ for (let i = 0; i < cantTareas; i++) {
 
     tarea.alertaUsuario();
     lista.push(tarea);
+
+    lista.sort ((a, b) => {
+        if (a.duracion < b.duracion) {
+            return 1;
+        }
+        if (a.duracion > b.duracion) {
+            return -1;
+        }
+        return 0;
+    })
 }
 
 console.log(lista);
+
+// Para el desafío complementario incluí una función que organiza las tareas por duración de mayor a menor 
+
+
