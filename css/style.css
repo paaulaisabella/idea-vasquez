@@ -83,6 +83,7 @@ h1{
 }
 .contenedor__reloj{
     font-size: xx-large;
+    text-align: center;
 }
 .contenedor__boton{
     padding: 3px;
