@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desafío</title>
     <link rel="stylesheet" href="./css/style.css">
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">   
 </head>
 <body>
     <main>
@@ -23,17 +28,17 @@
     <form class="formulario">
     <div class="formulario__div">
         <input type="nombreDeTarea" class="" id="nombreDeTarea" placeholder="Tarea 1">
-        <input type="tiempoDeTarea" class="" id="tiempoDeTarea" placeholder="Horas/Minutos/Segundos">
+        <input type="tiempoDeTarea" class="" id="tiempoDeTarea" placeholder="Horas/Minutos">
     </div>
     <div class="formulario__div">
         <input type="nombreDeTarea" class="" id="nombreDeTarea" placeholder="Tarea 2">
-        <input type="tiempoDeTarea" class="" id="tiempoDeTarea" placeholder="Horas/Minutos/Segundos">
+        <input type="tiempoDeTarea" class="" id="tiempoDeTarea" placeholder="Horas/Minutos">
     </div>
     <div class="formulario__div">
         <input type="nombreDeTarea" class="" id="nombreDeTarea" placeholder="Tarea 3">
-        <input type="tiempoDeTarea" class="" id="tiempoDeTarea" placeholder="Horas/Minutos/Segundos">
+        <input type="tiempoDeTarea" class="" id="tiempoDeTarea" placeholder="Horas/Minutos">
     </div>
-    <button type="reset" id="reset" name= "reset" class="">Borrar todo</button>
+    <button type="reset" id="reset" name= "reset" class="formulario__boton">Borrar todo</button>
     </form>
 
     <div class="contenedor">
@@ -43,10 +48,10 @@
     </section>
     <section class="contenedor__cuadro-tiempo">
         Tiempo Restante: 
-        <span>00:13:23</span>
-        <button>Finalizar Tarea</button>
-        <button>Resetear Timer</button>
-        <button>Pausar</button>
+        <span class="contenedor__reloj">00:13:23</span>
+        <button class="contenedor__boton">Finalizar Tarea</button>
+        <button class="contenedor__boton">Resetear Timer</button>
+        <button class="contenedor__boton">Pausar</button>
     </section>
 
     <section class="contenedor__cuadro-porHacer">
@@ -59,6 +64,6 @@
     </div>
     </main>
 
-    <script src="./js/javascript.js"></script>
+    <!-- <script src="./js/javascript.js"></script> -->
 </body>
 </html>
