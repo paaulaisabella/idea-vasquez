@@ -1,3 +1,4 @@
+
 // VARIABLE PARA MOSTRAR LA LISTA DE TAREAS:
 let lista = [];
 
@@ -29,7 +30,6 @@ class Tareas {
 
 let numero = Number(prompt(`- Presione 1 para agregar tareas.
 - Presione 2 para ver las tareas ordenadas de mayor a menor.
-- Presione 3 para ver la cantidad de tareas por realizar.
 - Presione cualquier otra tecla para terminar.`));
 
 while (numero == 1 || numero == 2 || numero == 3) {
@@ -79,9 +79,5 @@ switch (numero) {
 }
     numero = Number(prompt(`- Presione 1 para agregar tareas.
 - Presione 2 para ver las tareas ordenadas de mayor a menor.
-- Presione 3 para ver la cantidad de tareas por realizar.
 - Presione cualquier otra tecla para terminar.`));
 }
-
-
-
