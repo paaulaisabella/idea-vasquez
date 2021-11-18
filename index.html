@@ -27,24 +27,23 @@
 
     <form class="formulario">
     <div class="formulario__div">
-        <input type="nombreDeTarea" class="" id="nombreDeTarea" placeholder="Tarea 1">
-        <input type="tiempoDeTarea" class="" id="tiempoDeTarea" placeholder="Horas/Minutos">
+        <!-- <input type="nombreDeTarea" class="" id="nombreDeTarea" placeholder="Tarea 1">
+        <input type="tiempoDeTarea" class="" id="tiempoDeTarea" placeholder="Horas/Minutos"> -->
     </div>
-    <div class="formulario__div">
+    <!-- <div class="formulario__div">
         <input type="nombreDeTarea" class="" id="nombreDeTarea" placeholder="Tarea 2">
         <input type="tiempoDeTarea" class="" id="tiempoDeTarea" placeholder="Horas/Minutos">
     </div>
     <div class="formulario__div">
         <input type="nombreDeTarea" class="" id="nombreDeTarea" placeholder="Tarea 3">
         <input type="tiempoDeTarea" class="" id="tiempoDeTarea" placeholder="Horas/Minutos">
-    </div>
+    </div> -->
     <button type="reset" id="reset" name= "reset" class="formulario__boton">Borrar todo</button>
     </form>
 
     <div class="contenedor">
     <section class="contenedor__cuadro-tareas">
         Estás llevando a cabo la tarea: 
-        <span>"(nombre de la tarea)"</span>
     </section>
     <section class="contenedor__cuadro-tiempo">
         Tiempo Restante: 
@@ -55,13 +54,13 @@
     </section>
 
     <section class="contenedor__cuadro-porHacer">
-        Tareas por realizar:
+        Tareas por realizar: <span class="tareas-que-faltan"></span>
         <ul class="lista__tareas"></ul>
     </section>
 
     <section class="contenedor__cuadro-finalizado">
-        Tareas de mayor a menor:
-        <ul class="mayor"></ul>
+        Ordenadas de mayor a menor duración:
+        <ul class="lista__mayor"></ul>
     </section>
     </div>
     </main>
