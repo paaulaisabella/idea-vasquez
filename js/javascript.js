@@ -1,3 +1,11 @@
+const mostrarTareas = lista => {
+    const ul = document.querySelector(".lista__tareas");
+    lista.forEach(lista => {
+        const li = document.createElement("li");
+        li.textContent = "Nombre: " + lista[Tareas.nombre] + " Duración: " + lista[Tareas.duracion] + " Categoría: " + lista[Tareas.nombre];
+        ul.appendChild(li);
+    });
+}
 // VARIABLE PARA MOSTRAR LA LISTA DE TAREAS:
 let lista = [];
 
@@ -18,9 +26,9 @@ class Tareas {
             alert("Ingrese un tiempo válido.");
         } else if (this.duracion < 0) {
             alert("Usted ingresó un tiempo inválido, intente de nuevo.");
-        } else {
+        } /* else {
             alert(`La tarea se llama ${this.nombre} y dura ${this.duracion}min. Su categoría es: ${this.categoria}`);
-        } 
+        }  */
     }
 
 }
@@ -53,9 +61,10 @@ switch (numero) {
             const tarea = new Tareas (nombreTarea, tiempoTarea, categTarea);
         
             tarea.alertaUsuario();
-            lista.push(tarea);
+            lista.push(JSON.stringify(tarea));
         }
-        console.log(lista);
+        // console.log(lista);
+        mostrarTareas(lista);
         break;
     case 2:
         lista.sort ((a, b) => {
@@ -68,7 +77,8 @@ switch (numero) {
             return 0;
         })
         alert("Presiona cualquier tecla y dirígete a la consola (Click derecho -> Inspeccionar -> Consola)")
-        console.log(lista);
+        // console.log(lista);
+        mostrarTareas(lista);
         break;
 
     case 3:
