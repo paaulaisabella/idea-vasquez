@@ -1,25 +1,22 @@
-// const mostrarTareas = lista => {
-//     const ul = document.querySelector(".lista__tareas");
-//     lista.forEach(lista => {
-//         const li = document.createElement("li");
-//         li.textContent = "Nombre: " + lista[Tareas] + " Duración: " + lista[Tareas.duracion] + " Categoría: " + lista[Tareas.categoria];
-//         ul.appendChild(li);
-//     });
-// }
 
-/* const ul = document.querySelector(".lista__tareas");
-for(let i = 0; i < cantTareas; i++ ){
-    const li = document.createElement("li");
-        li.textContent = "Nombre: " + lista[i].nombre + " Duración: " + lista[i].duracion + " Categoría: " + lista[i]. categoria;
-        ul.appendChild(li);
-} */
+function actualizarLS(lista) {
+    const tareasJSON = JSON.stringify(lista);
+    localStorage.setItem("tareas", tareasJSON);
+}
 
 // VARIABLE PARA MOSTRAR LA LISTA DE TAREAS:
 let lista = [];
 
+const tareasLS = localStorage.getItem("tareas");
+
+if (tareasLS === null){
+    lista = [];
+} else {
+    lista = JSON.parse(tareasLS);
+}
+
 // VARIABLE DE CANTIDAD DE TAREAS:
 let cantTareas;
-
 
 // DECLARAMOS UNA CLASE CON SU MÉTODO:
 class Tareas {
@@ -69,18 +66,18 @@ switch (numero) {
             tarea.alertaUsuario();
             lista.push(tarea);
         }
-        const mostrarTareas = document.querySelector(".lista__tareas");
-        for(let i = 0; i < cantTareas; i++ ){
-            mostrarTareas.innerHTML - "";
-        const li = document.createElement("li");
-        li.textContent = "Nombre: " + lista[i].nombre + " Duración: " + lista[i].duracion + "min Categoría: " + lista[i].categoria;
-        mostrarTareas.appendChild(li);
-    };
 
+    actualizarLS(lista);
+    const mostrarTareas = document.querySelector(".lista__tareas");
+    for(let i = 0; i < lista.length; i++){
+    const li = document.createElement("li");
+    li.textContent = "Nombre: " + lista[i].nombre + " Duración: " + lista[i].duracion + "min Categoría: " + lista[i].categoria;
+    mostrarTareas.appendChild(li);
+    };
     const displayNombre = document.querySelector(".contenedor__cuadro-tareas");
-const parrafo = document.createElement("p");
-parrafo.textContent = lista[0].nombre;
-displayNombre.appendChild(parrafo);
+    const parrafo = document.createElement("p");
+    parrafo.textContent = lista[0].nombre;
+    displayNombre.appendChild(parrafo);
 
     break;
 
@@ -94,9 +91,9 @@ displayNombre.appendChild(parrafo);
             }
             return 0;
         })
+        actualizarLS(lista);
         const ordenarTareas = document.querySelector(".lista__mayor");
-        for(let i = 0; i < cantTareas; i++ ){
-            ordenarTareas.innerHTML - "";
+        for(let i = 0; i < lista.length; i++ ){
         const li = document.createElement("li");
         li.textContent = "Nombre: " + lista[i].nombre + " Duración: " + lista[i].duracion + "min Categoría: " + lista[i].categoria;
         ordenarTareas.appendChild(li);
