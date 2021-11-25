@@ -1,87 +1,122 @@
+// VARIABLE PARA MOSTRAR LA LISTA DE TAREAS:
+let lista = [];
 
+
+// FUNCIONES
+
+// LS
 function actualizarLS(lista) {
     const tareasJSON = JSON.stringify(lista);
     localStorage.setItem("tareas", tareasJSON);
 }
 
-// VARIABLE PARA MOSTRAR LA LISTA DE TAREAS:
-let lista = [];
-
 const tareasLS = localStorage.getItem("tareas");
 
 if (tareasLS === null){
-    lista = [];
+lista = [];
 } else {
-    lista = JSON.parse(tareasLS);
+lista = JSON.parse(tareasLS);
+mostrarTareas(lista);
+ordenarTareas(lista);
 }
 
-// VARIABLE DE CANTIDAD DE TAREAS:
-let cantTareas;
+// TAREAS
+function mostrarTareas(lista) { 
+    const mostrarTareas = document.querySelector(".lista__tareas");
+    mostrarTareas.innerHTML = "";
+    lista.forEach(tarea => {
+        const li = document.createElement("li");
+        li.textContent = `Nombre: ${tarea.nombre}. Duración: ${tarea.duracion} min. Descripción: ${tarea.descripcion}.`;
+        mostrarTareas.appendChild(li);
+    });
+    }
+
+function ordenarTareas(lista) {
+    const ordenarTareas = document.querySelector(".lista__mayor");
+    ordenarTareas.innerHTML = "";
+    for(let i = 0; i < lista.length; i++){
+    const li = document.createElement("li");
+    li.textContent = `Nombre: ${lista[i].nombre}. Duración: ${lista[i].duracion} min. Descripción: ${lista[i].descripcion}.`;
+    ordenarTareas.appendChild(li);
+};
+}
 
 // DECLARAMOS UNA CLASE CON SU MÉTODO:
 class Tareas {
-    constructor(nombre, duracion, categoria){
+    constructor(nombre, duracion, descripcion){
         this.nombre = nombre;
         this.duracion = duracion;
-        this.categoria = categoria
+        this.descripcion = descripcion
     }
 
-    alertaUsuario(){
+    /* alertaUsuario(){
         if(this.duracion > 200) { 
-            alert("Ingrese un tiempo válido.");
-        } else if (this.duracion < 0) {
-            alert("Usted ingresó un tiempo inválido, intente de nuevo.");
+            const tiempoValido = document.getElementById("tiempo");
+            const p = createElement("p");
+            p.textContent = "El tiempo debe ser menor a 200.";
+            tiempoValido.appendChild(p);
+        } else if (this.duracion <= 0) {
+            p.textContent = "El tiempo debe ser mayor a 0";
+            tiempoValido.appendChild(p);
         }
-    }
-
+    } */
 }
 
-// INICIAMOS UN FOR PARA PEDIR DATOS DE LAS TAREAS A REALIZAR: 
+/* EVENTOS */
+document.querySelector(".contenedor__tareas").addEventListener("submit", agregarTarea);
 
-let numero = Number(prompt(`- Presione 1 para agregar tareas.
-- Presione 2 para ver las tareas ordenadas de mayor a menor.
-- Presione cualquier otra tecla para terminar.`));
-
-while (numero == 1 || numero == 2) {
-switch (numero) {
-    case 1:
-    // INICIA BUCLE PARA VER CANT. DE TAREAS
-    do {
-        cantTareas = Number(prompt("Ingrese la cantidad de tareas a realizar."));
-    if (cantTareas <= 0) {
-        alert("Has ingresado un número inválido.");
-    } else if (cantTareas > 99) {
-        alert("No puedes ingresar más de 99 tareas.")
+    function agregarTarea(e){
+        e.preventDefault();
+        
+        let nombreTarea = document.getElementById("nombre-tarea").value;
+        let tiempoTarea = Number(document.getElementById("tiempo-tarea").value);
+        let descripTarea = document.getElementById("descripcion-tarea").value;
+        
+        const tarea = new Tareas (nombreTarea, tiempoTarea, descripTarea);
+        // alertaUsuario();
+        
+        if (nombreTarea !== "" && tiempoTarea !== 0) {
+        lista.push(tarea);
+        } else if (nombreTarea == "") {
+            const alerta = document.querySelector(".contenedor__tareas");
+            alerta.innerHTML += "";
+            const alertaTitulo = document.createElement("p");
+            alertaTitulo.style.color = "red"
+            alertaTitulo.style.fontSize = "15px"
+            alertaTitulo.textContent = "Tienes que ingresar un nombre para la tarea.";
+            alerta.appendChild(alertaTitulo);
+        } else if (tiempoTarea == 0) {
+            const alerta = document.querySelector(".contenedor__tareas");
+            alerta.innerHTML += "";
+            const alertaTiempo = document.createElement("p");
+            alertaTiempo.style.color = "red"
+            alertaTiempo.style.fontSize = "15px"
+            alertaTiempo.textContent = "Tienes que ingresar el tiempo de la tarea.";
+            alerta.appendChild(alertaTiempo);
+        }
+        
+        actualizarLS(lista);
+        document.getElementById("formulario").reset();
+        mostrarTareas(lista);
     }
 
-    } while (cantTareas <= 0 || cantTareas > 99);
+    /* ACÁ TENEMOS EL BOTÓN PARA BORRAR EL LS */
+    const borrar = document.querySelector(".boton-borrar").addEventListener("click", borrarTareas);
+    function borrarTareas() {
+        localStorage.clear();
+        lista = [];
+        document.querySelector(".lista__tareas").innerHTML = lista;
+        document.querySelector(".lista__mayor").innerHTML = lista;
+    }
 
-        for (let i = 0; i < cantTareas; i++) {
-            let nombreTarea = prompt("Ingrese el nombre de la tarea.");
-            let tiempoTarea = Number(prompt("Ingrese el tiempo de duración (en minutos)."));
-            let categTarea = prompt("Ahora, indique la categoría de la tarea (escuela, trabajo, hogar...).");
-        
-            const tarea = new Tareas (nombreTarea, tiempoTarea, categTarea);
-        
-            tarea.alertaUsuario();
-            lista.push(tarea);
-        }
-
-    actualizarLS(lista);
-    const mostrarTareas = document.querySelector(".lista__tareas");
-    for(let i = 0; i < lista.length; i++){
-    const li = document.createElement("li");
-    li.textContent = "Nombre: " + lista[i].nombre + " Duración: " + lista[i].duracion + "min Categoría: " + lista[i].categoria;
-    mostrarTareas.appendChild(li);
-    };
-    const displayNombre = document.querySelector(".contenedor__cuadro-tareas");
+    /* actualizarLS(lista); */
+    /* const displayNombre = document.querySelector(".contenedor__cuadro-tareas");
     const parrafo = document.createElement("p");
     parrafo.textContent = lista[0].nombre;
-    displayNombre.appendChild(parrafo);
+    displayNombre.appendChild(parrafo); */
 
-    break;
 
-    case 2:
+    /* PARA ORDENAR LAS TAREAS DE MAYOR A MENOR: */
         lista.sort ((a, b) => {
             if (a.duracion < b.duracion) {
                 return 1;
@@ -92,20 +127,8 @@ switch (numero) {
             return 0;
         })
         actualizarLS(lista);
-        const ordenarTareas = document.querySelector(".lista__mayor");
-        for(let i = 0; i < lista.length; i++ ){
-        const li = document.createElement("li");
-        li.textContent = "Nombre: " + lista[i].nombre + " Duración: " + lista[i].duracion + "min Categoría: " + lista[i].categoria;
-        ordenarTareas.appendChild(li);
-    };
-        break;
-    default:
-        break;
-}
-    numero = Number(prompt(`- Presione 1 para agregar tareas.
-- Presione 2 para ver las tareas ordenadas de mayor a menor.
-- Presione cualquier otra tecla para terminar.`));
-}
+        ordenarTareas(lista);
+
 
 
 

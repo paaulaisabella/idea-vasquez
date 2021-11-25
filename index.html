@@ -20,26 +20,23 @@
     Suscipit quidem optio eaque deleniti cum sit consectetur! 
     Tempora nostrum obcaecati recusandae.</p>
 
-    <div class="contenedor__cantidadTareas">
-        <label for="numeroDeTareas" class="">Ingresa la cantidad de tareas a realizar:</label>
-        <input type="numero" class="" id="numero" placeholder="1-99">
-    </div>
-
-    <form class="formulario">
-    <div class="formulario__div">
-        <!-- <input type="nombreDeTarea" class="" id="nombreDeTarea" placeholder="Tarea 1">
-        <input type="tiempoDeTarea" class="" id="tiempoDeTarea" placeholder="Horas/Minutos"> -->
-    </div>
-    <!-- <div class="formulario__div">
-        <input type="nombreDeTarea" class="" id="nombreDeTarea" placeholder="Tarea 2">
-        <input type="tiempoDeTarea" class="" id="tiempoDeTarea" placeholder="Horas/Minutos">
-    </div>
-    <div class="formulario__div">
-        <input type="nombreDeTarea" class="" id="nombreDeTarea" placeholder="Tarea 3">
-        <input type="tiempoDeTarea" class="" id="tiempoDeTarea" placeholder="Horas/Minutos">
-    </div> -->
-    <button type="reset" id="reset" name= "reset" class="formulario__boton">Borrar todo</button>
+    <div class="primer-contenedor">
+    <form id="formulario" class="contenedor__tareas">
+        <label for="numeroDeTareas">Escribe el nombre de la tarea:</label>
+        <input type="numero" id="nombre-tarea" class="input" placeholder= "Ej: Limpiar la casa">
+        <label for="numeroDeTareas" id="tiempo">Tiempo de la tarea:</label>
+        <input type="numero" id="tiempo-tarea" class="input" placeholder= "1min-200min">
+        <label for="numeroDeTareas" class="">Añade una descripción:</label>
+        <textarea name="" class="input" id="descripcion-tarea" cols="50" rows="5"></textarea>
+        <button type= "submit" id="submit" name= "submit" class="formulario__boton">Agregar</button>
     </form>
+
+    <section class="contenedor__cuadro-porHacer">
+        Tareas por realizar: <span class="tareas-que-faltan"></span>
+        <ul class="lista__tareas"></ul>
+        <button type="reset" id="reset" name= "reset" class="boton-borrar">Borrar todo</button>
+    </section>
+    </div>
 
     <div class="contenedor">
     <section class="contenedor__cuadro-tareas">
@@ -51,11 +48,6 @@
         <button class="contenedor__boton">Finalizar Tarea</button>
         <button class="contenedor__boton">Resetear Timer</button>
         <button class="contenedor__boton">Pausar</button>
-    </section>
-
-    <section class="contenedor__cuadro-porHacer">
-        Tareas por realizar: <span class="tareas-que-faltan"></span>
-        <ul class="lista__tareas"></ul>
     </section>
 
     <section class="contenedor__cuadro-finalizado">
