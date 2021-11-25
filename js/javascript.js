@@ -21,22 +21,31 @@ ordenarTareas(lista);
 }
 
 // TAREAS
-function mostrarTareas(lista) { 
-    const mostrarTareas = document.querySelector(".lista__tareas");
-    mostrarTareas.innerHTML = "";
-    lista.forEach(tarea => {
-        const li = document.createElement("li");
-        li.textContent = `Nombre: ${tarea.nombre}. Duración: ${tarea.duracion} min. Descripción: ${tarea.descripcion}.`;
-        mostrarTareas.appendChild(li);
-    });
-    }
+
+    function mostrarTareas(lista) { 
+        const mostrarTareas = document.querySelector(".lista__tareas");
+        mostrarTareas.innerHTML = "";
+        lista.forEach(tarea => {
+            let nombre = tarea.nombre;
+            let duracion = tarea.duracion;
+            let descripcion = tarea.descripcion
+            const li = document.createElement("li");
+            li.innerHTML = `<div class= inner-task id = "lista.lenght"><span class= "texto-resaltado">Nombre</span>: ${nombre}. 
+            <span class= "texto-resaltado">Duración:</span> ${duracion} min. 
+            <span class= "texto-resaltado">Descripción:</span> ${descripcion}.</div>`;
+            mostrarTareas.appendChild(li);
+        });
+        }
 
 function ordenarTareas(lista) {
     const ordenarTareas = document.querySelector(".lista__mayor");
     ordenarTareas.innerHTML = "";
     for(let i = 0; i < lista.length; i++){
     const li = document.createElement("li");
-    li.textContent = `Nombre: ${lista[i].nombre}. Duración: ${lista[i].duracion} min. Descripción: ${lista[i].descripcion}.`;
+    li.innerHTML = `<div class= inner-task><span class= "texto-resaltado">Nombre:</span> ${lista[i].nombre}. 
+    <span class= "texto-resaltado">Duración:</span> ${lista[i].duracion} min. 
+    <span class= "texto-resaltado">Descripción:</span> ${lista[i].descripcion}.
+    </div>`;
     ordenarTareas.appendChild(li);
 };
 }
