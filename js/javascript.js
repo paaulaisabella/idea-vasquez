@@ -30,9 +30,9 @@ ordenarTareas(lista);
             let duracion = tarea.duracion;
             let descripcion = tarea.descripcion
             const li = document.createElement("li");
-            li.innerHTML = `<div class= inner-task id = "lista.lenght"><span class= "texto-resaltado">Nombre</span>: ${nombre}. 
+            li.innerHTML = `<div class= inner-task id = "lista.lenght"><span class= "texto-resaltado">Nombre</span>: ${nombre} 
             <span class= "texto-resaltado">Duración:</span> ${duracion} min. 
-            <span class= "texto-resaltado">Descripción:</span> ${descripcion}.</div>`;
+            <span class= "texto-resaltado">Descripción:</span> ${descripcion}</div>`;
             mostrarTareas.appendChild(li);
         });
         }
@@ -42,9 +42,9 @@ function ordenarTareas(lista) {
     ordenarTareas.innerHTML = "";
     for(let i = 0; i < lista.length; i++){
     const li = document.createElement("li");
-    li.innerHTML = `<div class= inner-task><span class= "texto-resaltado">Nombre:</span> ${lista[i].nombre}. 
+    li.innerHTML = `<div class= inner-task><span class= "texto-resaltado">Nombre:</span> ${lista[i].nombre} 
     <span class= "texto-resaltado">Duración:</span> ${lista[i].duracion} min. 
-    <span class= "texto-resaltado">Descripción:</span> ${lista[i].descripcion}.
+    <span class= "texto-resaltado">Descripción:</span> ${lista[i].descripcion}
     </div>`;
     ordenarTareas.appendChild(li);
 };
@@ -58,17 +58,39 @@ class Tareas {
         this.descripcion = descripcion
     }
 
-    /* alertaUsuario(){
+    alertaTiempo(){
         if(this.duracion > 200) { 
-            const tiempoValido = document.getElementById("tiempo");
-            const p = createElement("p");
+            const mayor200 = document.querySelector(".contenedor__tareas");
+            let p = document.createElement("p");
+            p.style.color = "red"
+            p.style.fontSize = "15px"
             p.textContent = "El tiempo debe ser menor a 200.";
-            tiempoValido.appendChild(p);
+            mayor200.appendChild(p);
         } else if (this.duracion <= 0) {
+            const menor0 = document.querySelector(".contenedor__tareas");
+            let p = document.createElement("p");
+            p.style.color = "red"
+            p.style.fontSize = "15px"
             p.textContent = "El tiempo debe ser mayor a 0";
-            tiempoValido.appendChild(p);
+            menor0.appendChild(p);
+        } 
+        /* else {
+            const vacio = document.querySelector(".contenedor__tareas");
+            vacio.innerHTML += " ";
+            console.log(vacio);
+        } */
+    }
+
+    alertaNombre(){
+        if (this.nombre == "") {
+            const alerta = document.querySelector(".contenedor__tareas");
+            const alertaTitulo = document.createElement("p");
+            alertaTitulo.style.color = "red"
+            alertaTitulo.style.fontSize = "15px"
+            alertaTitulo.textContent = "Tienes que ingresar un nombre para la tarea.";
+            alerta.appendChild(alertaTitulo);
         }
-    } */
+    }
 }
 
 /* EVENTOS */
@@ -82,27 +104,16 @@ document.querySelector(".contenedor__tareas").addEventListener("submit", agregar
         let descripTarea = document.getElementById("descripcion-tarea").value;
         
         const tarea = new Tareas (nombreTarea, tiempoTarea, descripTarea);
-        // alertaUsuario();
+
         
-        if (nombreTarea !== "" && tiempoTarea !== 0) {
-        lista.push(tarea);
-        } else if (nombreTarea == "") {
-            const alerta = document.querySelector(".contenedor__tareas");
-            alerta.innerHTML += "";
-            const alertaTitulo = document.createElement("p");
-            alertaTitulo.style.color = "red"
-            alertaTitulo.style.fontSize = "15px"
-            alertaTitulo.textContent = "Tienes que ingresar un nombre para la tarea.";
-            alerta.appendChild(alertaTitulo);
-        } else if (tiempoTarea == 0) {
-            const alerta = document.querySelector(".contenedor__tareas");
-            alerta.innerHTML += "";
-            const alertaTiempo = document.createElement("p");
-            alertaTiempo.style.color = "red"
-            alertaTiempo.style.fontSize = "15px"
-            alertaTiempo.textContent = "Tienes que ingresar el tiempo de la tarea.";
-            alerta.appendChild(alertaTiempo);
-        }
+        if (nombreTarea !== "" && tiempoTarea !== 0 && tiempoTarea <= 200 && tiempoTarea > 0) {
+            const vacio = document.querySelector(".contenedor__tareas");
+            vacio.innerHTML += "";
+            lista.push(tarea);
+        } 
+        
+        tarea.alertaNombre();
+        tarea.alertaTiempo();
         
         actualizarLS(lista);
         document.getElementById("formulario").reset();
@@ -117,12 +128,6 @@ document.querySelector(".contenedor__tareas").addEventListener("submit", agregar
         document.querySelector(".lista__tareas").innerHTML = lista;
         document.querySelector(".lista__mayor").innerHTML = lista;
     }
-
-    /* actualizarLS(lista); */
-    /* const displayNombre = document.querySelector(".contenedor__cuadro-tareas");
-    const parrafo = document.createElement("p");
-    parrafo.textContent = lista[0].nombre;
-    displayNombre.appendChild(parrafo); */
 
 
     /* PARA ORDENAR LAS TAREAS DE MAYOR A MENOR: */
