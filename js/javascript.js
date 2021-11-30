@@ -125,7 +125,15 @@ document.querySelector(".contenedor__tareas").addEventListener("submit", agregar
 
     /* QUIERO UN BOTÓN QUE BORRE LAS TAREAS INDIVIDUALES */
 
-    
+    const quitarItem = document.querySelector(".borrar-item").addEventListener("click", borrarItem(lista[Tareas.nombreTarea],lista[Tareas.descripTarea]));
+    function borrarItem(nombre, descripcion) {
+        for (let i = 0; i < lista.length; i++){
+            if (lista[i].nombre == nombre && lista[i].descripcion == descripcion){
+                lista.splice(i, 1);
+            }
+        }
+        
+    }
 
     /* ACÁ TENEMOS EL BOTÓN PARA BORRAR EL LS */
     const borrar = document.querySelector(".boton-borrar").addEventListener("click", borrarTareas);
