@@ -7,7 +7,10 @@
 
 li{
     list-style-type: none;
+    display: flex;
 }
+
+
 
 h1{
     text-align: center;
@@ -111,6 +114,8 @@ h1{
     box-shadow: 0px 1.5px 1.5px 1px rgba(178, 178, 179, 0.502);
 }
 
+
+/* ACÁ ESTÁN LOS ESTILOS DE LOS ELEMENTOS AGREGADOS EN JS */
 .texto-resaltado{
     color: #F25032;
 }
@@ -120,6 +125,20 @@ h1{
     margin: 3px 0;
     padding: 2px 5px;
     border-radius: 3px;
+}
+
+.borrar-item{
+    background-color: #F25032;
+    border: #f33615;
+    margin: 3px 0 3px 5px;
+    padding: 0 5px;
+    border-radius: 3px;
+}
+
+.borrar-item:hover{
+    background-color: #ee2400;
+    cursor: pointer;
+    color: white;
 }
 
 @media only screen and (max-width: 1024px){

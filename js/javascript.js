@@ -30,9 +30,11 @@ ordenarTareas(lista);
             let duracion = tarea.duracion;
             let descripcion = tarea.descripcion
             const li = document.createElement("li");
-            li.innerHTML = `<div class= inner-task id = "lista.lenght"><span class= "texto-resaltado">Nombre</span>: ${nombre} 
+            li.innerHTML = `<div class= inner-task><span class= "texto-resaltado">Nombre</span>: ${nombre} 
             <span class= "texto-resaltado">Duración:</span> ${duracion} min. 
-            <span class= "texto-resaltado">Descripción:</span> ${descripcion}</div>`;
+            <span class= "texto-resaltado">Descripción:</span> ${descripcion}</div>
+            <button type= "button" name= "button" id= "button" class= "borrar-item">X</button>
+            `;
             mostrarTareas.appendChild(li);
         });
         }
@@ -114,11 +116,16 @@ document.querySelector(".contenedor__tareas").addEventListener("submit", agregar
         
         tarea.alertaNombre();
         tarea.alertaTiempo();
-        
+
         actualizarLS(lista);
         document.getElementById("formulario").reset();
         mostrarTareas(lista);
+        ordenarTareas(lista);
     }
+
+    /* QUIERO UN BOTÓN QUE BORRE LAS TAREAS INDIVIDUALES */
+
+    
 
     /* ACÁ TENEMOS EL BOTÓN PARA BORRAR EL LS */
     const borrar = document.querySelector(".boton-borrar").addEventListener("click", borrarTareas);
@@ -142,7 +149,3 @@ document.querySelector(".contenedor__tareas").addEventListener("submit", agregar
         })
         actualizarLS(lista);
         ordenarTareas(lista);
-
-
-
-
