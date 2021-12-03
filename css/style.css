@@ -8,6 +8,11 @@
 li{
     list-style-type: none;
     display: flex;
+    background-color: hsla(0, 6%, 93%, 0.836);
+    margin: 3px 0;
+    padding: 2px 5px;
+    border-radius: 3px;
+    justify-content: space-between;
 }
 
 
@@ -120,12 +125,7 @@ h1{
     color: #F25032;
 }
 
-.inner-task{
-    background-color: hsla(0, 6%, 93%, 0.836);
-    margin: 3px 0;
-    padding: 2px 5px;
-    border-radius: 3px;
-}
+
 
 .borrar-item{
     background-color: #F25032;

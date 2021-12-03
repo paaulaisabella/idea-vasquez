@@ -28,11 +28,13 @@ ordenarTareas(lista);
         lista.forEach(tarea => {
             let nombre = tarea.nombre;
             let duracion = tarea.duracion;
-            let descripcion = tarea.descripcion
+            let descripcion = tarea.descripcion;
+
             const li = document.createElement("li");
-            li.innerHTML = `<div class= inner-task><span class= "texto-resaltado">Nombre</span>: ${nombre} 
-            <span class= "texto-resaltado">Duración:</span> ${duracion} min. 
-            <span class= "texto-resaltado">Descripción:</span> ${descripcion}</div>
+            li.className = "list-item"
+            li.innerHTML = `<div class= "inner-task"><span class= "texto-resaltado">Nombre: </span> ${nombre}
+            <span class= "texto-resaltado">Duración: </span> ${duracion} min. 
+            <span class= "texto-resaltado">Descripción: </span> ${descripcion} </div>
             <button type= "button" name= "button" id= "button" class= "borrar-item">X</button>
             `;
             mostrarTareas.appendChild(li);
@@ -57,7 +59,8 @@ class Tareas {
     constructor(nombre, duracion, descripcion){
         this.nombre = nombre;
         this.duracion = duracion;
-        this.descripcion = descripcion
+        this.descripcion = descripcion;
+        
     }
 
     alertaTiempo(){
@@ -76,23 +79,8 @@ class Tareas {
             p.textContent = "El tiempo debe ser mayor a 0";
             menor0.appendChild(p);
         } 
-        /* else {
-            const vacio = document.querySelector(".contenedor__tareas");
-            vacio.innerHTML += " ";
-            console.log(vacio);
-        } */
     }
 
-    alertaNombre(){
-        if (this.nombre == "") {
-            const alerta = document.querySelector(".contenedor__tareas");
-            const alertaTitulo = document.createElement("p");
-            alertaTitulo.style.color = "red"
-            alertaTitulo.style.fontSize = "15px"
-            alertaTitulo.textContent = "Tienes que ingresar un nombre para la tarea.";
-            alerta.appendChild(alertaTitulo);
-        }
-    }
 }
 
 /* EVENTOS */
@@ -104,7 +92,7 @@ document.querySelector(".contenedor__tareas").addEventListener("submit", agregar
         let nombreTarea = document.getElementById("nombre-tarea").value;
         let tiempoTarea = Number(document.getElementById("tiempo-tarea").value);
         let descripTarea = document.getElementById("descripcion-tarea").value;
-        
+
         const tarea = new Tareas (nombreTarea, tiempoTarea, descripTarea);
 
         
@@ -114,22 +102,23 @@ document.querySelector(".contenedor__tareas").addEventListener("submit", agregar
             lista.push(tarea);
         } 
         
-        tarea.alertaNombre();
         tarea.alertaTiempo();
 
         actualizarLS(lista);
         document.getElementById("formulario").reset();
         mostrarTareas(lista);
         ordenarTareas(lista);
+
     }
 
     /* QUIERO UN BOTÓN QUE BORRE LAS TAREAS INDIVIDUALES */
-
-    const quitarItem = document.querySelector(".borrar-item").addEventListener("click", borrarItem);
-    function borrarItem() {
-        const li = document.querySelector("li");
-        const ul = document.querySelector("ul");
-        ul.removeChild(li);
+    
+    const quitarItem = document.querySelectorAll('.borrar-item');
+    for (let i = 0; i < quitarItem.length; i++){
+        quitarItemEvento = quitarItem[i].addEventListener("click", (e) => {
+            const button = e.target;
+            button.closest('.list-item').remove();
+        });
     }
 
     /* ACÁ TENEMOS EL BOTÓN PARA BORRAR EL LS */
