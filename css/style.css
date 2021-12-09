@@ -125,7 +125,10 @@ h1{
     color: #F25032;
 }
 
-
+.alerta-usuario{
+    color: #F25032;
+    font-size: 15px;
+}
 
 .borrar-item{
     background-color: #F25032;
