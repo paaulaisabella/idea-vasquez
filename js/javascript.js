@@ -25,12 +25,25 @@ mostrarTareas(lista);
 ordenarTareas(lista);
 }
 
+$("h1").fadeOut(2000, function(){
+    $("h1").fadeIn(2000);
+}); 
+
+
+/* if(lista.length == 0){
+    $(".contenedor__cuadro-porHacer").css("display", "none");
+    $(".segundo-contenedor").css("display", "none");
+} else if (lista.lenght == 1){
+    $(".contenedor__cuadro-porHacer").css("display", "show");
+    $(".segundo-contenedor").css("display", "show");
+} */
+
 // TAREAS
 
 function mostrarTareas(lista) { 
     const mostrarTareas = document.querySelector(".lista__tareas");
     mostrarTareas.innerHTML = "";
-        
+    
 
     lista.forEach(tarea => { 
         let nombre = tarea.nombre;
@@ -137,6 +150,7 @@ class Tareas {
         ordenarTareas(lista);
     } */
 
+
     $("#formulario").submit((e) => {
         e.preventDefault();
         
@@ -165,7 +179,7 @@ class Tareas {
     
     const quitarItem = document.querySelectorAll('.borrar-item');
     for (let i = 0; i < quitarItem.length; i++){
-        quitarItemEvento = quitarItem[i].addEventListener("click", (e) => {
+        quitarItemEvento = quitarItem[i].addEventListener("click", () => {
             const boton = e.target
             boton.closest('.list-item').remove();
         });

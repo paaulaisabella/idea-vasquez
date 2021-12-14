@@ -73,11 +73,10 @@ h1{
 
 /* ACÁ COMIENZAN LOS CUADROS */
 .segundo-contenedor{
-    margin-top: 3%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    margin-bottom: 5%;
+    margin: 3% 10% 5%;
 }
 
 /* CONT. NOMBRE DE LA TAREA */
@@ -155,11 +154,14 @@ h1{
         width: auto;
         margin-left: 0;
     }
-    .contenedor__cuadro-finalizado{
-        margin-top: 1rem;
-    }
 
     .segundo-contenedor{
-        margin: 0 5% 5%;
+        margin: auto 5% 5%;
     }
+
+    .contenedor__cuadro-finalizado{
+        margin-top: 1rem;
+        width: auto;
+    }
+
 }
