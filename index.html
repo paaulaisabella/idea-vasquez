@@ -26,9 +26,9 @@
     <div class="primer-contenedor">
     <form id="formulario" class="contenedor__tareas">
         <label for="numeroDeTareas">Escribe el nombre de la tarea:</label>
-        <input type="numero" id="nombre-tarea" class="input" placeholder= "Ej: Limpiar la casa" requiered>
+        <input type="text" id="nombre-tarea" class="input" placeholder= "Ej: Limpiar la casa" requiered>
         <label for="numeroDeTareas" id="tiempo">Tiempo de la tarea:</label>
-        <input type="numero" id="tiempo-tarea" class="input" placeholder= "1min-200min" required>
+        <input type="number" id="tiempo-tarea" class="input" max= "200" min= "1" placeholder= "1min-200min" required>
         <label for="numeroDeTareas" class="">Añade una descripción:</label>
         <textarea name="" class="input" id="descripcion-tarea" cols="50" rows="5"></textarea>
         <button type= "submit" id="submit" name= "submit" class="formulario__boton">Agregar</button>
@@ -47,20 +47,18 @@
     </section>
     <section class="contenedor__cuadro-tiempo">
         Tiempo Restante: 
-        <span class="contenedor__reloj">00:13:23</span>
-        <button class="contenedor__boton">Finalizar Tarea</button>
-        <button class="contenedor__boton">Resetear Timer</button>
-        <button class="contenedor__boton">Pausar</button>
-    </section>
-
-    <section class="contenedor__cuadro-finalizado">
-        Ordenadas de mayor a menor duración:
-        <ul class="lista__mayor"></ul>
+        <div class="seccion contenedor__reloj"></div>
+        <button id= "comenzar" class="contenedor__boton">Comenzar</button>
+        <!-- <button id= "resetear" class="contenedor__boton">Resetear Timer</button> -->
     </section>
     </div>
+    
+    <!-- <div class="tercer-contenedor clima">
+        Acá puedes ver el clima actual:
+    </div> -->
     </main>
 
-    <script src="./js/javascript.js"></script>
+    <script src="./js/main.js"></script>
     
 </body>
 </html>
