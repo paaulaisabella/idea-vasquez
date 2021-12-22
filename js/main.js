@@ -168,3 +168,20 @@ class Tareas {
         lista = [];
         document.querySelector(".lista__tareas").innerHTML = lista;
     })
+
+    $.ajax({
+        method: "GET",
+        url: "https://api.openweathermap.org/data/2.5/weather?q=buenos%20aires&appid=348cf72de878e18e0d71982cafeef024&units=metric&lang_es",
+        success: function (respuesta) {
+            console.log(`${respuesta.weather}`);
+            mostrarDatos(respuesta);
+        }
+    });
+
+    let mostrarDatos = (clima) => {
+        infoClima = $("main");
+        infoClima.append(`<div class="tercer-contenedor clima">
+        <p>El clima actual es: ${clima.weather.main}</p></div>`)
+        console.log(`${clima.weather.main}`)
+
+    }
