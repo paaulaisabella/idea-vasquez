@@ -59,18 +59,20 @@ function mostrarTareas(lista) {
 
 $("#comenzar").click(function (e) { //FUNCIÓN PARA COMENZAR EL TEMPORIZADOR
     e.preventDefault();
+    $(".contenedor__tareas").fadeOut(); //QUITAMOS EL FORMULARIO PARA QUE NO SE AGREGUEN MÁS TAREAS MIENTRAS CORRE EL TIMER
+    $(".primer-contenedor").css("justify-content", "center");
     for (let i = 0; i < lista.length; i++){
         let duracion = lista[i].duracion;
         let tiempo = duracion * 60;
-    
+        
         let recargarIntervalo = setInterval(actualizarConteo, 1000);
         
         function actualizarConteo(){
             const minutos = Math.floor(tiempo / 60);
             let segundos = tiempo % 60;
-    
+        
             segundos = segundos < 10 ? '0' + segundos : segundos;
-    
+        
             let seccion = document.querySelector(".seccion");
             seccion.innerHTML = " "; //AGREGAMOS ESTO PARA QUE SE VAYAN BORRANDO LOS NÚMEROS Y NO SE ACUMULEN AL LADO DEL OTRO
             let parrafo = document.createElement("p");
@@ -78,12 +80,18 @@ $("#comenzar").click(function (e) { //FUNCIÓN PARA COMENZAR EL TEMPORIZADOR
             seccion.appendChild(parrafo);
             
             tiempo--;
-            if (tiempo < 0) { // ESTO PARA QUE NO SE VAYA A LOS NÚMEROS NEGATIVOS
+            if (tiempo < 0) { // ESTO PARA QUE NO SE VAYA A NÚMEROS NEGATIVOS
                 clearInterval(recargarIntervalo);
             }
+            if (tiempo == 0){
+                $(".contenedor__tareas").fadeIn("slow");
+            }
         }
-        actualizarConteo();
-        $(".contenedor__cuadro-tareas").append(" ");
+        
+        if(i >= lista.length) continue
+        actualizarConteo(recargarIntervalo);
+        let contenedor = document.querySelector(".contenedor__cuadro-tareas");
+        contenedor.innerHTML += " ";
         $(".contenedor__cuadro-tareas").append(`<p class = "llevando-a-cabo">${lista[i].nombre} <br>
         "${lista[i].descripcion}"</p>`)
     }
@@ -128,14 +136,14 @@ class Tareas {
 
         const tarea = new Tareas (nombreTarea, tiempoTarea, descripTarea);
 
-        
+        //AGREGAMOS UNA CONDICIÓN PARA EVITAR QUE SE AGREGUEN TAREAS VACÍAS, SIN TIEMPO O CON TIEMPO MAYOR A 200
         if (nombreTarea !== "" && tiempoTarea !== 0 && tiempoTarea <= 200 && tiempoTarea > 0) {
             const vacio = document.querySelector(".contenedor__tareas");
             vacio.innerHTML += "";
             lista.push(tarea);
         } 
         
-
+        //EJECUTAMOS LAS FUNCIONES CORRESPONDIENTES
         tarea.alertaTiempo();
         actualizarLS(lista);
         document.getElementById("formulario").reset(); // ESTO PARA QUE EL FORMULARIO SE LIMPIE CADA VEZ QUE AGREGAMOS UNA TAREA
@@ -169,19 +177,29 @@ class Tareas {
         document.querySelector(".lista__tareas").innerHTML = lista;
     })
 
-    $.ajax({
-        method: "GET",
-        url: "https://api.openweathermap.org/data/2.5/weather?q=buenos%20aires&appid=348cf72de878e18e0d71982cafeef024&units=metric&lang_es",
-        success: function (respuesta) {
-            console.log(`${respuesta.weather}`);
-            mostrarDatos(respuesta);
+// AJAX
+
+    $("#fecha").click(function (e) { //ESTE BOTÓN ES PARA PODER ACCEDER A LOS DATOS DE LA API DE FERIADOS
+        e.preventDefault();
+        for(let i = 0; i < 16; i++){ //UTILIZAMOS UN FOR PARA QUE RECORRA TODOS LOS DATOS DEL ARRAY
+            let mostrarDatos = (fecha) => {
+                $(".tercer-contenedor").append(`<p class = "parrafo-feriados">El ${fecha[i].date} es ${fecha[i].localName}</p>`)
+                $(".parrafo-feriados").css({"margin": "0% 5% 3%",
+                                    "background-color": "rgba(178, 178, 179, 0.502)",
+                                    "border-radius": "3px",
+                                    "padding": "3px"});
+            }
+    
+            let url = "https://date.nager.at/api/v3/publicholidays/2022/AR"
+            const getData = () => {
+                $.ajax({
+                    method: "GET",
+                    url: url,
+                    success: (response) => {
+                        mostrarDatos(response);
+                    }
+                });
+            }
+            getData();
         }
     });
-
-    let mostrarDatos = (clima) => {
-        infoClima = $("main");
-        infoClima.append(`<div class="tercer-contenedor clima">
-        <p>El clima actual es: ${clima.weather.main}</p></div>`)
-        console.log(`${clima.weather.main}`)
-
-    }
