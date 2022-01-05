@@ -181,6 +181,7 @@ class Tareas {
 
     $("#fecha").click(function (e) { //ESTE BOTÓN ES PARA PODER ACCEDER A LOS DATOS DE LA API DE FERIADOS
         e.preventDefault();
+        $("#fecha").hide();
         for(let i = 0; i < 16; i++){ //UTILIZAMOS UN FOR PARA QUE RECORRA TODOS LOS DATOS DEL ARRAY
             let mostrarDatos = (fecha) => {
                 $(".tercer-contenedor").append(`<p class = "parrafo-feriados">El ${fecha[i].date} es ${fecha[i].localName}</p>`)

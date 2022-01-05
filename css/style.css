@@ -113,16 +113,6 @@ h1{
     justify-content: center;
 }
 
-/* CONT. FINALIZADO */
-.contenedor__cuadro-finalizado{
-    display: flex;
-    flex-direction: column;
-    padding: 1rem 1rem 2rem;
-    border: 1px solid #66B95F;
-    border-radius: 3px;
-    box-shadow: 0px 1.5px 1.5px 1px rgba(178, 178, 179, 0.502);
-}
-
 /* TERCER CONTENEDOR */
 #fecha{
     height: 2rem;
@@ -132,6 +122,7 @@ h1{
     padding: 5px 1rem;
     margin-left: 5%;
     margin-bottom: 3%;
+    border-radius: 2px;
 }
 
 #fecha:hover{
