@@ -15,17 +15,11 @@ li{
     justify-content: space-between;
 }
 
-
-
 h1{
     text-align: center;
     font-weight: 800;
     margin-top: 3%;
-}
-
-.parrafo__principal{
     margin: 2% 10% 3%;
-    text-align: center;
 }
 
 /* CONTENEDOR PRINCIPAL*/
@@ -45,6 +39,7 @@ h1{
     padding: 1rem;
     font-size: 20px;
     height: fit-content;
+    border-radius: 20px;
 }
 
 /* DONDE MUESTRA LAS TAREAS */
@@ -58,6 +53,7 @@ h1{
     margin-left: 20px;
     border: 1px solid #F5C666;
     box-shadow: 0px 1.5px 1.5px 1px rgba(178, 178, 179, 0.502);
+    border-radius: 20px;
 }
 
 .boton-borrar, .formulario__boton{
@@ -69,75 +65,36 @@ h1{
 
 .input {
     padding: 3px 7px;
+    border-radius: 5px;
 }
 
-/* ACÁ COMIENZAN LOS CUADROS */
+/* DONDE MUESTRA LOS RESULTADOS DE LA API */
 .segundo-contenedor{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    margin: 3% 10% 5%;
-    justify-content: space-around;
-}
-
-/* CONT. NOMBRE DE LA TAREA */
-.contenedor__cuadro-tareas{
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-    border: 1px solid #1899D2;
-    border-radius: 3px;
-    box-shadow: 0px 1.5px 1.5px 1px rgba(178, 178, 179, 0.502);
-}
-
-/* CONT. TIEMPO DE LA TAREA */
-.contenedor__cuadro-tiempo{
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-    border: 1px solid #F25032;
-    border-radius: 3px;
-    box-shadow: 0px 1.5px 1.5px 1px rgba(178, 178, 179, 0.502);
-}
-.contenedor__reloj{
-    font-size: xx-large;
-    text-align: center;
-}
-.contenedor__boton{
-    padding: 3px;
-    margin: 9px;
-}
-
-.seccion{
-    display: flex;
     justify-content: center;
+    margin: 3% 10% 5%;
+    align-items: center;
 }
 
-/* TERCER CONTENEDOR */
 #fecha{
     height: 2rem;
     color: black;
-    background-color: #1899D2;
-    border: 1px solid hsl(198, 76%, 21%);
+    background-color: #189ad29d;
+    border: 1px solid hsl(199, 48%, 25%);
     padding: 5px 1rem;
-    margin-left: 5%;
     margin-bottom: 3%;
     border-radius: 2px;
 }
 
 #fecha:hover{
     cursor: pointer;
-    background-color: #1785b4;
+    background-color: #70a4bbb9;
 }
 
 /* ACÁ ESTÁN LOS ESTILOS DE LOS ELEMENTOS AGREGADOS EN JS */
 .texto-resaltado{
     color: #F25032;
-}
-
-.alerta-usuario{
-    color: #F25032;
-    font-size: 15px;
 }
 
 .borrar-item{
@@ -154,12 +111,10 @@ h1{
     color: white;
 }
 
-.llevando-a-cabo{
-    font-size: x-large;
-    text-align: center;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+.inner-task{
+    display: flex;
 }
+
 
 /* MEDIA QUERY */
 @media only screen and (max-width: 1024px){
@@ -176,11 +131,6 @@ h1{
 
     .segundo-contenedor{
         margin: auto 5% 5%;
-    }
-
-    .contenedor__cuadro-tiempo{
-        margin-top: 1rem;
-        width: auto;
     }
 
     #fecha{

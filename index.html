@@ -11,47 +11,35 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">  
 
+    <!-- ÍCONOS -->
+    <script src="https://kit.fontawesome.com/7d7c5b6044.js" crossorigin="anonymous"></script>
+
     <!-- JQUERY -->
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
 </head>
 <body>
     <main>
-    <h1>Temporizador de Tareas</h1>
-    
-    <p class="parrafo__principal">¡Bienvenidx al temporizador de tareas! Una vez aprientes el botón "comenzar", 
-        desaparecerá el cuadro para agregar tareas, y cuando termine el temporizador, volverá a aparecer.</p>
+    <h1>Lista de Tareas</h1>
 
     <div class="primer-contenedor">
     <form id="formulario" class="contenedor__tareas">
         <label for="numeroDeTareas">Escribe el nombre de la tarea:</label>
         <input type="text" id="nombre-tarea" class="input" placeholder= "Ej: Limpiar la casa" requiered>
-        <label for="numeroDeTareas" id="tiempo">Tiempo de la tarea:</label>
-        <input type="number" id="tiempo-tarea" class="input" max= "200" min= "1" placeholder= "1min-200min" required>
         <label for="numeroDeTareas" class="">Añade una descripción:</label>
         <textarea name="" class="input" id="descripcion-tarea" cols="50" rows="5"></textarea>
-        <button type= "submit" id="submit" name= "submit" class="formulario__boton">Agregar</button>
+        <button type= "submit" id="agregar" name= "submit" class="formulario__boton">Agregar</button>
     </form>
 
     <section class="contenedor__cuadro-porHacer">
         Tareas por realizar: <span class="tareas-que-faltan"></span>
         <ul class="lista__tareas"></ul>
+        <!-- Se agrega con el JS -->
         <button type="reset" id="reset" name= "reset" class="boton-borrar">Borrar todo</button>
     </section>
     </div>
 
     <div class="segundo-contenedor">
-    <section class="contenedor__cuadro-tareas">
-        Estás llevando a cabo la tarea: 
-    </section>
-    <section class="contenedor__cuadro-tiempo">
-        Tiempo Restante: 
-        <div class="seccion contenedor__reloj"></div>
-        <button id= "comenzar" class="contenedor__boton">Comenzar</button>
-    </section>
-    </div>
-
-    <div class="tercer-contenedor">
         <button id="fecha">Haz click acá para ver feriados</button>
     </div>
     </main>
